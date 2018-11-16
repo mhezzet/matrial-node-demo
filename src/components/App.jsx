@@ -1,13 +1,16 @@
-import React, { Component ,Fragment } from 'react';
+import React, { Component, Fragment } from 'react'
+import { Header, Footer } from './layouts'
 
 class App extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Hello React !!</h1>
+        <Header />
+
+        <Footer />
       </Fragment>
-    );
+    )
   }
 }
 
-export default App;
+export default App
