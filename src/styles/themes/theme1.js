@@ -1,4 +1,6 @@
 export default {
-  primaryColor: 'blue',
-  secondryColor: 'red'
+  palette: {
+    primaryColor: 'black',
+    secondryColor: 'wheat'
+  }
 }

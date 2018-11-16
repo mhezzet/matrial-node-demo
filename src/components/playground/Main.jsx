@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import { Grid } from '@material-ui/core'
+import LeftPane from './LeftPane'
+import RightPane from './RightPane'
 
-export default class Main extends Component {
+const styles = theme => ({
+  paper: { padding: 10, margin: 20 }
+})
+class Main extends Component {
   render() {
-    return <div />
+    const { classes } = this.props
+
+    return (
+      <Grid container spacing={16}>
+        <LeftPane style={classes} />
+        <RightPane style={classes} />
+      </Grid>
+    )
   }
 }
+
+export default withStyles(styles)(Main)

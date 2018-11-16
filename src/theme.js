@@ -1,9 +1,9 @@
 import React from 'react'
-import { ThemeProvider } from '@material-ui/styles'
-import { jssPreset, StylesProvider } from '@material-ui/styles'
 import { create } from 'jss'
 import jssTemplate from 'jss-template'
+import { jssPreset, StylesProvider, ThemeProvider } from '@material-ui/styles'
 import { theme1 } from './styles/themes'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
 const jss = create({
   plugins: [jssTemplate(), ...jssPreset().plugins]
@@ -12,6 +12,7 @@ const jss = create({
 export default function Theme({ children }) {
   return (
     <ThemeProvider theme={theme1}>
+      <CssBaseline />
       <StylesProvider jss={jss}>{children}</StylesProvider>
     </ThemeProvider>
   )
