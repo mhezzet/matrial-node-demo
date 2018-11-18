@@ -6,18 +6,6 @@ import {
   Select,
   Button
 } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
-
-const styles = {
-  formItems: {
-    marginButtom: 12,
-    marginTop: 12,
-    marginRight: 30,
-    marginLeft: 30,
-    width: 400
-  },
-  createButton: { margin: 10, marginTop: 30 }
-}
 
 class Form extends Component {
   state = { title: '', description: '', muscles: '' }
@@ -41,7 +29,7 @@ class Form extends Component {
   }
 
   render() {
-    const { classes, muscles: catagories, type } = this.props,
+    const { muscles: catagories, type } = this.props,
       { title, description, muscles } = this.state
     console.log(this.state)
     return (
@@ -51,9 +39,9 @@ class Form extends Component {
           value={title}
           onChange={this.handleChange('title')}
           margin="normal"
-          className={classes.formItems}
+          fullWidth
         />
-        <FormControl className={classes.formItems}>
+        <FormControl fullWidth margin="normal">
           <InputLabel htmlFor="age-native-simple">muscles</InputLabel>
           <Select
             value={muscles}
@@ -75,13 +63,15 @@ class Form extends Component {
           margin="normal"
           multiline
           rows="4"
-          className={classes.formItems}
+          fullWidth
         />
         <Button
           onClick={this.handleSubmit}
           color="primary"
           variant="contained"
-          className={classes.createButton}
+          margin="normal"
+          fullWidth
+          disabled={!muscles || !title}
         >
           {type}
         </Button>
@@ -90,4 +80,4 @@ class Form extends Component {
   }
 }
 
-export default withStyles(styles)(Form)
+export default Form

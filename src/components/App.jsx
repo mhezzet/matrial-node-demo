@@ -1,7 +1,17 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Header, Footer } from './layouts'
 import Main from './exercises/Main'
 import { exercises, muscles } from '../store'
+import { withStyles } from '@material-ui/core/styles'
+
+const styles = theme => ({
+  '@global': {
+    'html, body, #root': { height: '100vh' }
+  },
+  container: {
+    height: '100vh'
+  }
+})
 
 class App extends Component {
   state = {
@@ -61,9 +71,11 @@ class App extends Component {
 
   render() {
     const exercises = this.getExercisesByMuscles()
-    const { SelectedMuscle, selectedExercise, editMode } = this.state
+    const { SelectedMuscle, selectedExercise, editMode } = this.state,
+      { classes } = this.props
+
     return (
-      <Fragment>
+      <div className={classes.container}>
         <Header muscles={muscles} onCreate={this.handleCreate} />
         <Main
           exercises={exercises}
@@ -82,9 +94,9 @@ class App extends Component {
           onSelect={this.handleSelect}
           selectedMuscle={SelectedMuscle}
         />
-      </Fragment>
+      </div>
     )
   }
 }
 
-export default App
+export default withStyles(styles)(App)

@@ -38,12 +38,14 @@ export default function Main({
   const classes = styles()
   return (
     <Grid container>
-      <Grid item md>
+      <Grid item xs={12} sm={6}>
         <Paper className={classes.paper}>
           {exercises.map(([group, exercises]) =>
             !selectedMuscle || selectedMuscle === group ? (
               <Fragment key={group}>
-                <Typography variant="h6">{group}</Typography>
+                <Typography variant="h6" color="secondary">
+                  {group}
+                </Typography>
                 <List component="ul">
                   {exercises.map(({ title, id }) => (
                     <ListItem
@@ -69,7 +71,7 @@ export default function Main({
           )}
         </Paper>
       </Grid>
-      <Grid item md>
+      <Grid item xs={12} sm={6}>
         {editMode ? (
           <Paper className={classes.paper}>
             <Form
@@ -82,7 +84,9 @@ export default function Main({
           </Paper>
         ) : (
           <Paper className={classes.paper}>
-            <Typography variant="h4">{title}</Typography>
+            <Typography variant="h4" color="secondary">
+              {title}
+            </Typography>
             <Typography variant="body1" className={classes.leftPaneSubheading}>
               {description}
             </Typography>

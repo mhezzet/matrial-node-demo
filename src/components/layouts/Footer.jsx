@@ -1,10 +1,10 @@
 import React from 'react'
-import { AppBar, Tab, Tabs } from '@material-ui/core'
+import { AppBar, Tab, Tabs, withWidth } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 
 const styles = makeStyles(theme => ({}))
 
-export default function Footer({ muscles, onSelect, selectedMuscle }) {
+function Footer({ muscles, onSelect, selectedMuscle, width }) {
   const classes = styles()
   const index = muscles
     ? muscles.findIndex(muscle => muscle === selectedMuscle) + 1
@@ -15,7 +15,14 @@ export default function Footer({ muscles, onSelect, selectedMuscle }) {
   }
   return (
     <AppBar position="static" className={classes.root}>
-      <Tabs centered onChange={onMuscleSelect} value={index}>
+      <Tabs
+        onChange={onMuscleSelect}
+        value={index}
+        indicatorColor="secondary"
+        textColor="secondary"
+        scrollable={width === 'xs'}
+        centered={width !== 'xs'}
+      >
         <Tab label="All" />
         {muscles.map(muscle => (
           <Tab key={muscle} label={muscle} />
@@ -24,3 +31,5 @@ export default function Footer({ muscles, onSelect, selectedMuscle }) {
     </AppBar>
   )
 }
+
+export default withWidth()(Footer)
