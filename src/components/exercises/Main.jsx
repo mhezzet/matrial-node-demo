@@ -73,6 +73,7 @@ export default function Main({
         {editMode ? (
           <Paper className={classes.paper}>
             <Form
+              key={Math.random()}
               selectedExercise={selectedExercise}
               muscles={muscles}
               onSubmiting={onEdit}

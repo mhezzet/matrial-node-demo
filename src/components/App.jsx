@@ -62,7 +62,6 @@ class App extends Component {
   render() {
     const exercises = this.getExercisesByMuscles()
     const { SelectedMuscle, selectedExercise, editMode } = this.state
-    console.log(this.state)
     return (
       <Fragment>
         <Header muscles={muscles} onCreate={this.handleCreate} />

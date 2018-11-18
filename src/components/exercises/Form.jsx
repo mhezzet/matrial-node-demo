@@ -20,19 +20,11 @@ const styles = {
 }
 
 class Form extends Component {
-  state = {
-    title: '',
-    description: '',
-    muscles: ''
-  }
+  state = { title: '', description: '', muscles: '' }
 
   componentDidMount() {
     if (!this.props.selectedExercise) return
     this.setState({ ...this.props.selectedExercise })
-  }
-
-  componentWillReceiveProps({ selectedExercise }) {
-    this.setState({ ...selectedExercise })
   }
 
   handleChange = name => ({ target: { value } }) =>
@@ -51,7 +43,7 @@ class Form extends Component {
   render() {
     const { classes, muscles: catagories, type } = this.props,
       { title, description, muscles } = this.state
-
+    console.log(this.state)
     return (
       <form style={{ display: 'contents' }}>
         <TextField
