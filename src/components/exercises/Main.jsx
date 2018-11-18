@@ -1,25 +1,25 @@
 import React, { Fragment } from 'react'
-import { makeStyles } from '@material-ui/styles'
 import { Delete, Edit } from '@material-ui/icons'
 import {
-  Grid,
-  Paper,
-  List,
-  ListItem,
   ListItemText,
   Typography,
   ListItemSecondaryAction,
-  IconButton
+  IconButton,
+  withStyles,
+  Grid,
+  Paper,
+  List,
+  ListItem
 } from '@material-ui/core'
 import Form from './Form'
 
-const styles = makeStyles(theme => ({
+const styles = {
   paper: { padding: 10, margin: 10, height: 500, overflowY: 'auto' },
   headline: { textTransform: 'capitalize' },
   leftPaneSubheading: { marginTop: 20 }
-}))
+}
 
-export default function Main({
+function Main({
   exercises,
   selectedMuscle,
   onSelect,
@@ -28,14 +28,13 @@ export default function Main({
   onEdit,
   editMode,
   muscles,
-  onCreate,
+  classes,
   selectedExercise: {
     title = 'Welcome',
     description = 'Please select an exersice from the list on the left.'
   },
   selectedExercise
 }) {
-  const classes = styles()
   return (
     <Grid container>
       <Grid item xs={12} sm={6}>
@@ -96,3 +95,5 @@ export default function Main({
     </Grid>
   )
 }
+
+export default withStyles(styles)(Main)

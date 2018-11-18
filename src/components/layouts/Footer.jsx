@@ -1,11 +1,7 @@
 import React from 'react'
 import { AppBar, Tab, Tabs, withWidth } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
-
-const styles = makeStyles(theme => ({}))
 
 function Footer({ muscles, onSelect, selectedMuscle, width }) {
-  const classes = styles()
   const index = muscles
     ? muscles.findIndex(muscle => muscle === selectedMuscle) + 1
     : 0
@@ -14,7 +10,7 @@ function Footer({ muscles, onSelect, selectedMuscle, width }) {
     onSelect(index === 0 ? '' : muscles[index - 1])
   }
   return (
-    <AppBar position="static" className={classes.root}>
+    <AppBar position="static">
       <Tabs
         onChange={onMuscleSelect}
         value={index}
