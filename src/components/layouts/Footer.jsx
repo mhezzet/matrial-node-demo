@@ -1,26 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { AppBar, Tab, Tabs } from '@material-ui/core'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/styles'
 
-const styles = theme => ({})
-class Footer extends Component {
-  state = {
-    selected: 0
-  }
+const styles = makeStyles(theme => ({}))
 
-  handleChange = (event, value) => {
-    this.setState({ selected: value })
+export default function Footer({ muscles, onSelect, selectedMuscle }) {
+  const classes = styles()
+  const index = muscles
+    ? muscles.findIndex(muscle => muscle === selectedMuscle) + 1
+    : 0
+
+  const onMuscleSelect = (e, index) => {
+    onSelect(index === 0 ? '' : muscles[index - 1])
   }
-  render() {
-    return (
-      <AppBar position="static">
-        <Tabs value={this.state.selected} onChange={this.handleChange} centered>
-          <Tab label="Item One" />
-          <Tab label="Item Two" />
-          <Tab label="Item Three" />
-        </Tabs>
-      </AppBar>
-    )
-  }
+  return (
+    <AppBar position="static" className={classes.root}>
+      <Tabs centered onChange={onMuscleSelect} value={index}>
+        <Tab label="All" />
+        {muscles.map(muscle => (
+          <Tab key={muscle} label={muscle} />
+        ))}
+      </Tabs>
+    </AppBar>
+  )
 }
-export default withStyles(styles)(Footer)
